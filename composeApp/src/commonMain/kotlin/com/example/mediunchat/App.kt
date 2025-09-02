@@ -283,29 +283,12 @@ fun PersonItem(person: Person) {
                         .align(Alignment.BottomEnd)
                         .background(Color(0xFFC7F0BB), CircleShape)
                 )
-            }
-        }
-
-        Column(
-            modifier = Modifier.weight(1f),
-            verticalArrangement = Arrangement.spacedBy(4.dp)
-        ) {
-            Text(
-                text = person.name,
-                color = Color.White,
-                fontSize = 17.sp,
-                fontWeight = FontWeight.Medium,
-                letterSpacing = (-0.2).sp
-            )
-
-            // Online status badge
-            person.onlineStatus?.let { status ->
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
+            } else {
+                // Online status badge
+                person.onlineStatus?.let { status ->
                     Box(
                         modifier = Modifier
+                            .align(Alignment.BottomEnd)
                             .background(Color(0xFFC7F0BB), RoundedCornerShape(5.dp))
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
@@ -318,8 +301,24 @@ fun PersonItem(person: Person) {
                             textAlign = TextAlign.Center
                         )
                     }
+
                 }
             }
+        }
+
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+
+            Text(
+                text = person.name,
+                color = Color.White,
+                fontSize = 17.sp,
+                fontWeight = FontWeight.Medium,
+                letterSpacing = (-0.2).sp
+            )
+
         }
 
         // Wave button
